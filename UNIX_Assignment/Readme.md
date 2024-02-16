@@ -7,13 +7,12 @@
 ###Attributes of `fang_et_al_genotypes`
 
 
-here is my snippet of code used for data inspection
-```
-    du -h fang_et_al_genotypes.txt
+ here is my snippet of code used for data inspection
+   du -h fang_et_al_genotypes.txt
    echo "Lines Words Characters File"
    wc fang_et_al_genotypes.txt 
    awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt 
- ```
+
 By inspecting this file I learned that:
 
 1. The file size is 6.7Mb
@@ -25,12 +24,12 @@ By inspecting this file I learned that:
 
 
 here is my snippet of code used for data inspection
-  ``` (head -n 3; tail -n 3) < snp_position.txt
+   '''(head -n 3; tail -n 3) < snp_position.txt
     du -h snp_position.txt
     echo "Lines Words Characters File"
     wc snp_position.txt
-    awk -F "\t" '{print NF; exit}' snp_position.txt
- ```   
+    awk -F "\t" '{print NF; exit}' snp_position.txt '''
+ 
 By inspecting this file I learned that:
 
 1. These following information are available: SNP_ID,cdv_marker_id,Chromosome_Position,alt_pos,mult_positions,amplicon,cdv_map_feature.name,gene,candidate/random,Genaissance_daa_id,Sequenom_daa_id,count_amplicons,count_cmf,count_gene. We also got to know about the head and tail of the file.
@@ -73,7 +72,7 @@ Maize Data
   We analyzed the data with nano and figured out the sorting. We kept the heading as it is, and sorted based on the first column from the fourth line. We did it for both the snp_position
   and  Maize_genotypes file. Also, only 3 columns of snp_txt file was obtained as required by the question (id, chromosome and position).
        
-      '''join -1 1 -2 1 -a 1 --head sorted_3column_snp_position.txt sorted_transposed_Maize_genotypes.txt  > Maize_joined.txt 
+      ''' join -1 1 -2 1 -a 1 --head sorted_3column_snp_position.txt sorted_transposed_Maize_genotypes.txt  > Maize_joined.txt 
          { head -n 1 Maize_joined.txt; tail -n +2 Maize_joined.txt | sort -k3,3n; } > sorted_Maize_joined.txt
             for ((i=1; i<=10; i++)); 
                do 
