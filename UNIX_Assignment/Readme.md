@@ -6,11 +6,12 @@
 
 ###Attributes of `fang_et_al_genotypes`
  here is my snippet of code used for data inspection
+ 
    '''
    du -h fang_et_al_genotypes.txt
    echo "Lines Words Characters File"
    wc fang_et_al_genotypes.txt 
-   awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt 
+   awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt '''
 
 By inspecting this file I learned that:
 
@@ -44,10 +45,10 @@ here is my snippet of code used for data processing along with the brief descrip
    
 For both Data
  
-    head -n 1 fang_et_al_genotypes.txt > Maize_genotypes.txt
+ '''head -n 1 fang_et_al_genotypes.txt > Maize_genotypes.txt
     head -n 1 fang_et_al_genotypes.txt > Teosinte_genotypes.txt
      grep -E "(ZMMIL|ZMMLR|ZMMMR)" fang_et_al_genotypes.txt >> Maize_genotypes.txt
-     grep -E "(ZMPBA|ZMPIL|ZMPJA)" fang_et_al_genotypes.txt >> Teosinte_genotypes.txt
+     grep -E "(ZMPBA|ZMPIL|ZMPJA)" fang_et_al_genotypes.txt >> Teosinte_genotypes.txt'''
      
 This take the header from the fang file, and then grep -E command takes the maize and teosinte data from the fang genotype and create new file.     
 
@@ -59,20 +60,23 @@ This part transposes the Maize and Teosinte data by calling the transpose.awk sc
 
 Maize Data
 
-    nano transposed_Maize_genotypes.txt
+  '''nano transposed_Maize_genotypes.txt
      { head -n 1 transposed_Maize_genotypes.txt; tail -n +4 transposed_Maize_genotypes.txt | sort -k1,1; } > sorted_transposed_Maize_genotypes.txt
       cut -f 1,3,4 snp_position.txt > 3column_snp_position.txt
       nano 3column_snp_position.txt 
       { head -n 1 3column_snp_position.txt; tail -n +2 3column_snp_position.txt | sort -k1,1; } > sorted_3column_snp_position.txt 
+      ''' 
+      
   We analyzed the data with nano and figured out the sorting. We kept the heading as it is, and sorted based on the first column from the fourth line. We did it for both the snp_position
   and  Maize_genotypes file. Also, only 3 columns of snp_txt file was obtained as required by the question (id, chromosome and position).
    
-       join -1 1 -2 1 -a 1 --head sorted_3column_snp_position.txt sorted_transposed_Maize_genotypes.txt  > Maize_joined.txt 
+       '''join -1 1 -2 1 -a 1 --head sorted_3column_snp_position.txt sorted_transposed_Maize_genotypes.txt  > Maize_joined.txt 
          { head -n 1 Maize_joined.txt; tail -n +2 Maize_joined.txt | sort -k3,3n; } > sorted_Maize_joined.txt
             for ((i=1; i<=10; i++)); 
                do 
                  awk -v i="$i" '$2 == i' sorted_Maize_joined.txt > "Maize_Chromosome_ascending_$i.txt"; 
-               done     
+               done'''
+               
                Now, finally the snp and fang files are joined, and then sorted based on their position. Since we have to create 10 files, we make a for loop for the 10 distinct chromosome positions, which results in 10 outputs with different chromosome names and position ascending. awk -v is necessary when we use a variable, in this case i.
        
          { head -n 1 Maize_joined.txt; tail -n +2 Maize_joined.txt | sed 's/?/-/g' | sort -k3,3nr; } > sorted_reverse_Maize_joined.txt
