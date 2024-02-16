@@ -6,7 +6,7 @@
 
 ###Attributes of `fang_et_al_genotypes`
 
-```
+
 here is my snippet of code used for data inspection
 ```du -h fang_et_al_genotypes.txt
    echo "Lines Words Characters File"
@@ -20,11 +20,11 @@ By inspecting this file I learned that:
 2. There are 986 columns in the file.
 
 
-###Attributes of `snp_position.txt`
+Attributes of `snp_position.txt`
 
 ```
 here is my snippet of code used for data inspection
-```(head -n 3; tail -n 3) < snp_position.txt
+   (head -n 3; tail -n 3) < snp_position.txt
     du -h snp_position.txt
     echo "Lines Words Characters File"
     wc snp_position.txt
@@ -37,16 +37,15 @@ By inspecting this file I learned that:
  
 3. There are 15 columns in the file.
 
-##Data Processing
+Data Processing
 
-###Maize Data
+Maize Data
 
-```
 here is my snippet of code used for data processing along with the brief description of what this code does.
    
 #For both Data
 
-```bash
+bash
     head -n 1 fang_et_al_genotypes.txt > Maize_genotypes.txt
     head -n 1 fang_et_al_genotypes.txt > Teosinte_genotypes.txt
      grep -E "(ZMMIL|ZMMLR|ZMMMR)" fang_et_al_genotypes.txt >> Maize_genotypes.txt
