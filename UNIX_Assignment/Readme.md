@@ -6,7 +6,6 @@
 
 ###Attributes of `fang_et_al_genotypes`
  here is my snippet of code used for data inspection
- 
    du -h fang_et_al_genotypes.txt
    echo "Lines Words Characters File"
    wc fang_et_al_genotypes.txt 
@@ -73,11 +72,9 @@ Maize Data
                do 
                  awk -v i="$i" '$2 == i' sorted_Maize_joined.txt > "Maize_Chromosome_ascending_$i.txt"; 
                done     
-     Now, finally the snp and fang files are joined, and then sorted based on their position. Since we have to create 10 files, we make a for loop for the 10 distinct chromosome positions, which
-     results in 10 outputs with different chromosome names and position ascending. awk -v is necessary when we use a variable, in this case i.
+               Now, finally the snp and fang files are joined, and then sorted based on their position. Since we have to create 10 files, we make a for loop for the 10 distinct chromosome positions, which results in 10 outputs with different chromosome names and position ascending. awk -v is necessary when we use a variable, in this case i.
        
-       
-             { head -n 1 Maize_joined.txt; tail -n +2 Maize_joined.txt | sed 's/?/-/g' | sort -k3,3nr; } > sorted_reverse_Maize_joined.txt
+         { head -n 1 Maize_joined.txt; tail -n +2 Maize_joined.txt | sed 's/?/-/g' | sort -k3,3nr; } > sorted_reverse_Maize_joined.txt
 
                for ((i=1; i<=10; i++)); 
                   do 
