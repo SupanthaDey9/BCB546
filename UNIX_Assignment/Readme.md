@@ -6,7 +6,8 @@
 
 ###Attributes of `fang_et_al_genotypes`
  here is my snippet of code used for data inspection
-   '''du -h fang_et_al_genotypes.txt
+   '''
+   du -h fang_et_al_genotypes.txt
    echo "Lines Words Characters File"
    wc fang_et_al_genotypes.txt 
    awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt 
