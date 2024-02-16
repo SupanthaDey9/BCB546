@@ -42,12 +42,12 @@ By inspecting this file I learned that:
 
 ###Maize Data
 
-```
+
 here is my snippet of code used for data processing along with the brief description of what this code does.
    
 #For both Data
 
-    ```head -n 1 fang_et_al_genotypes.txt > Maize_genotypes.txt
+ '''  head -n 1 fang_et_al_genotypes.txt > Maize_genotypes.txt
     head -n 1 fang_et_al_genotypes.txt > Teosinte_genotypes.txt
      grep -E "(ZMMIL|ZMMLR|ZMMMR)" fang_et_al_genotypes.txt >> Maize_genotypes.txt
      grep -E "(ZMPBA|ZMPIL|ZMPJA)" fang_et_al_genotypes.txt >> Teosinte_genotypes.txt```
