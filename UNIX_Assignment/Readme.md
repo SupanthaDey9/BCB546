@@ -16,7 +16,7 @@ here is my snippet of code used for data inspection
  ```
 By inspecting this file I learned that:
 
-1. The file size is 7Mb
+1. The file size is 6.7Mb
 2. There are 2783 Lines, 2744038 Words, and 2744038 Characters are present.
 3. There are 986 columns in the file.
 
@@ -29,6 +29,7 @@ here is my snippet of code used for data inspection
     du -h snp_position.txt
     echo "Lines Words Characters File"
     wc snp_position.txt
+    awk -F "\t" '{print NF; exit}' snp_position.txt
  ```   
 By inspecting this file I learned that:
 
