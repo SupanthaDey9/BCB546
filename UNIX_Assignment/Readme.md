@@ -14,6 +14,7 @@
    echo "Lines Words Characters File"
    wc fang_et_al_genotypes.txt 
    awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt 
+   
    '''
 
 By inspecting this file I learned that:
