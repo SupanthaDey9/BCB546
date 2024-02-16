@@ -46,12 +46,13 @@ By inspecting this file I learned that:
 
 here is my snippet of code used for data processing along with the brief description of what this code does.
    
-#For both Data
-
- '''  head -n 1 fang_et_al_genotypes.txt > Maize_genotypes.txt
+For both Data
+ '''  
+    head -n 1 fang_et_al_genotypes.txt > Maize_genotypes.txt
     head -n 1 fang_et_al_genotypes.txt > Teosinte_genotypes.txt
      grep -E "(ZMMIL|ZMMLR|ZMMMR)" fang_et_al_genotypes.txt >> Maize_genotypes.txt
-     grep -E "(ZMPBA|ZMPIL|ZMPJA)" fang_et_al_genotypes.txt >> Teosinte_genotypes.txt```
+     grep -E "(ZMPBA|ZMPIL|ZMPJA)" fang_et_al_genotypes.txt >> Teosinte_genotypes.txt
+     ```
      
 This take the header from the fang file, and then grep -E command takes the maize and teosinte data from the fang genotype and create new file.     
 
@@ -61,7 +62,7 @@ This take the header from the fang file, and then grep -E command takes the maiz
      
 This part transposes the Maize and Teosinte data by calling the transpose.awk script which was already created. Also, wc-l was used to be sure that both files have the same amount of lines.
 
-###Maize Data
+Maize Data
 
     ''' nano transposed_Maize_genotypes.txt
      { head -n 1 transposed_Maize_genotypes.txt; tail -n +4 transposed_Maize_genotypes.txt | sort -k1,1; } > sorted_transposed_Maize_genotypes.txt
@@ -99,7 +100,7 @@ This part transposes the Maize and Teosinte data by calling the transpose.awk sc
      "multiple"' find these information in the second (chromosome) and third(position) columns.  
 
 
-     ###Teosinte Data
+       Teosinte Data
         ''' { head -n 1 transposed_Teosinte_genotypes.txt; tail -n +4 transposed_Teosinte_genotypes.txt | sort -k1,1; } > sorted_transposed_Teosinte_genotypes.txt
             join -1 1 -2 1 -a 1 --header sorted_3column_snp_position.txt sorted_transposed_Teosinte_genotypes.txt > Teosinte_joined.txt
  
